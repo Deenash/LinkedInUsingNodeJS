@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit Profile | LinkedIn</title>
+<style type="text/css">
+.search_font {
+	color: white;
+	size: "20px";
+	font-family: cursive;
+}
+
+body {
+	font-family: Arial, sans-serif
+}
+</style>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+
+
+<body>
+
+<form class="form-horizontal" action="" id="form2" >
+	<div class="form-group" ng-app="myProfile" ng-controller="profileController">
+		<form>
+
+			<table width="100%" cellspacing="0"
+				style="background-image: url('../Images/searchBackground.PNG')">
+				<tr height="50">
+					<td width="200" align="right"><img
+						src="../Images/inToolbar.PNG" width="50" height="50"
+						align="middle"></td>
+					<td><table>
+							<tr>
+								<td width="300px"></td>
+								<td><span class="search_font">Search: </span> <span
+									style="padding-left: 10px;"><input type="text"
+										style="width: 300px; height: 40px" name="dynamicSearch"
+										placeholder="Search for Connections"></span></td>
+								<td width="50px;"><span style="padding-left: 10px"><button
+											class="btn btn-primary" ng-click="searchUser(user.emailId)">
+											<span class="glyphicon glyphicon-search"></span> 
+										</button></span></td>
+							</tr>
+						</table></td>
+					<td>	<button class="btn btn-primary" type="submit"
+					onclick="signOut()" style="">SignOut</button>
+				</tr>
+			</table>
+			<br>
+
+			<div align="center">
+				<table border="0" width="70%">
+					<tr class="container-fluid">
+						<td>
+							<table>
+
+								<tr class="container-fluid">
+									<td><h4>Hi,&nbsp;<%= fname %> Welcome!!!
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td><h4>LastLogin Time 
+&nbsp;&nbsp;&nbsp;&nbsp;
+									
+									
+													<% if(data!= null)
+					{%>
+						<td><%= data %> </td>
+					<%	}
+						%>
+									
+									
+									
+				
+								</tr>
+	
+
+							</table>
+						</td>
+						<td align="center" valign="middle">
+						<button class="btn btn-primary" type="submit"
+					onclick="editProfile()" style="">Edit Profile<span class="glyphicon glyphicon-pencil"></span> </button>
+						</td>
+									<td align="center" valign="middle">
+						<button class="btn btn-primary" type="submit"
+					onclick="connections()" style="">Connection <span class="glyphicon glyphicon-heart"></button>
+						</td>
+													<td align="center" valign="middle">
+						<button class="btn btn-primary" type="submit"
+					onclick="deleteAccount()" style="">Delete Account <span class="glyphicon glyphicon-trash"></button>
+						</td>
+					</tr>
+				</table>
+				<br> <br>
+				<table border="0" width="70%" ng-show="valSummary && valUser">
+					<tr>
+						<td><h4>Summary</h4></td>
+					</tr>
+					<tr style="height: 100px" valign="top">
+					<% if(summary!= null)
+					{%>
+						<td><%= summary %> </td>
+					<%	}
+						%>
+					</tr>
+				</table>
+				<br> <br>
+				<table border="0" width="70%" ng-show="valExperience && valUser">
+					<tr>
+						<td><h4>Experience</h4></td>
+					</tr>
+					<tr style="height: 100px" valign="top">
+									<% if(experience!= null)
+					{%>
+						<td><%= experience %> </td>
+					<%	}
+						%>
+						
+					</tr>
+				</table>
+				<table border="0" width="70%" ng-show="valEducation && valUser">
+					<tr>
+						<td><h4>Education</h4></td>
+					</tr>
+					<tr style="height: 100px" valign="top">
+						
+					<% if(education!= null)
+					{%>
+						<td><%= education %> </td>
+					<%	}
+						%>
+					</tr>
+				</table>
+				<br> <br>
+				<table border="0" width="70%" ng-show="valProjects && valUser">
+					<tr>
+						<td><h4>Projects</h4></td>
+					</tr>
+					<tr style="height: 100px" valign="top">
+						<% if(project!= null)
+					{%>
+					<td><%= project %> </td>
+					<%	}
+						%>
+						
+					</tr>
+				</table>
+				<br> <br>
+				<table border="0" width="70%">
+
+					<tr>
+						<td>
+							
+						</td>
+					</tr>
+				</table>
+			</div>
+			<br> <br>
+<!-- <div align="center">
+				<button class="btn btn-primary" type="submit"
+					ng-click="updateDetails()" style="">Update  </button></div> -->			
+		</form>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	</form>
+	
+<!-- 	<script>
+angular.module('myProfile', []).controller('profileController', ['$scope', function($scope) {
+    $scope.firstName = "John",
+    $scope.lastName = "Doe"
+    $scope.university="";
+    $scope.location="";
+    $scope.contact="";
+    $scope.summary="";
+    $scope.experience = "";
+    $scope.education = "";
+    $scope.projects = "";
+    $scope.valSummary=true;
+    $scope.valExperience = true;
+    $scope.valEducation = true;
+    $scope.valProjects = true;
+    $scope.valUser = true
+    $scope.updateDetails = function(){
+    	window.location = "#../profileDetail.html";
+    	//$location.path("profileDetail.html");
+    }
+    /*$scope.toggle = function() {
+        $scope.myVar = !$scope.myVar;
+    };*/
+}]);
+</script>-->
+
+<script type="text/javascript" >
+form=document.getElementById("form2");
+function connections()
+{
+	form.action="/connections";
+	form.method="post";
+	form.submit();
+	
+	}
+
+function editProfile()
+{
+	form.action="/displayEdit";
+	form.method="post";
+	form.submit();
+	
+	}
+	
+	
+	function signOut()
+{
+	form.action="/signOut";
+	form.method="post";
+	form.submit();
+	
+	}
+	
+function deleteAccount()
+{
+	form.action="/delete";
+	form.method="post";
+	form.submit();
+	
+	}
+</script>
+</body>
+
+</html>

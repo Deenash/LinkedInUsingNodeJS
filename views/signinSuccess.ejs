@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html ng-app="">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sign-In</title>
+<link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+
+</head>
+
+<body ng-controller="userController">
+<div class="container">
+<form class="form-horizontal" action="" id="form1" >
+		<table class="table table-striped" >
+			<tr>
+				<td><img src="../Images/Logo.png" alt="Mountain View"
+					style="width: 120px; height: 35px"></td>
+				<td>
+					<table><tr><td ></td><td>
+
+					Email Address
+					<div class="fieldgroup">
+						<span class="error" id="session_key-login-error"></span> 
+						<input type="email" name="loginid" value="" id="session_key-login" autofocus tabindex="1" size="27" 
+data-ime-mode-disabled>
+						<span style="color: red"
+							ng-show="myForm.email.$dirty && myForm.email.$invalid"> 
+							<span ng-show="myForm.email.$error.required">Email is required.</span>
+							<span ng-show="myForm.email.$error.email">Invalid credentials.</span> 
+						</span>
+								<br> 
+					Password
+					<div class="fieldgroup">
+						<span class="error" id="session_key-login-error"></span> 
+						<input type="password" name="inputpassword" value="" id="session_key-login" autofocus tabindex="1" size="27" 
+data-ime-mode-disabled>
+						<span style="color: red"
+							ng-show="myForm.email.$dirty && myForm.email.$invalid"> 
+							<span ng-show="myForm.email.$error.required">Password is required.</span>
+							<span ng-show="myForm.email.$error.email">Invalid credentials.</span> 
+						</span>
+						
+							</div>
+							<br>
+						<div class="fieldgroup">
+						<button class="btn btn-success" onclick="login()" ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+  myForm.email.$dirty && myForm.email.$invalid">
+							<span class="glyphicon glyphicon-user"></span>  Sign In
+						</button>
+					</div>	
+				</td></tr></table>
+				</td>
+				
+					
+				</tr>
+		</table>
+
+<h4 style="color: red"><%-successmsg%></h4>
+		<h3>New to LinkedIn?</h3>
+
+			<table class="table table-responsive" >
+				<tbody>
+					<tr>
+						<td>Email Id</td>
+						<td><input type="email" ng-model="email" name="emailid" ng-disabled="!edit"
+							placeholder="EMail Id" class="form-control"></td>
+					</tr>
+					<tr>
+						<td>First Name</td>
+						<td><input type="text" ng-model="fName" name="firstname" ng-disabled="!edit"
+							placeholder="First Name" class="form-control"></td>
+					</tr>
+					<tr>
+						<td>Last Name:</td>
+						<td><input type="text" ng-model="lName"  name="lastname"  ng-disabled="!edit"
+							placeholder="Last Name" class="form-control"></td>
+					</tr>
+					<tr>
+
+						<td>Password:</td>
+						<td><input type="password" ng-model="pass"  name="password" 
+							placeholder="Password" class="form-control"></td>
+					</tr>
+					<tr>
+						<td>University:</td>
+						<td><input type="text" ng-model="university" ng-disabled="!edit"  name="university" 
+							placeholder="University" class="form-control"></td>
+					</tr>
+					<tr>
+						<td>Location:</td>
+						<td><input type="text" ng-model="location" name="location"
+							placeholder="Current Location" class="form-control"></td>
+					</tr>
+					<tr>
+						<td>Mobile Number:</td>
+						<td><input type="text" ng-model="contact" ng-disabled="!edit" name="mobileno"
+							placeholder="Mobile Number" class="form-control"></td>
+					</tr>
+
+				</tbody>
+			</table>
+		</form>
+
+<hr>
+<button class="btn btn-success" onclick="register()">
+<span class="glyphicon glyphicon-user"></span>  Create New User
+</button>
+<hr>
+
+<script type="text/javascript" >
+form=document.getElementById("form1");
+function login()
+{
+	form.action="/signIn";
+	form.method="post";
+	form.submit();
+	
+	}
+function register()
+{
+	form.action="/register";
+	form.method="post";
+	form.submit();
+	
+	}
+
+</script>
+
+</body>
+</html>
